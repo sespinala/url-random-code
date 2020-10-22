@@ -2,14 +2,14 @@ import React from 'react';
 import { configure, shallow } from 'enzyme';
 import { expect } from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import App from './App';
+import Form from './Form';
 
 configure({ adapter: new Adapter() });
 
 describe('App component testing', () => {
-  it('Renders text', () => {
-    const wrapper = shallow(<App />); 
-    const expectedContent = <div>Hi</div>;
+  it('Renders div', () => {
+    const wrapper = shallow(<Form />); 
+    const expectedContent = <div></div>;
     expect(wrapper.contains(expectedContent)).to.equal(true);
   });
 });
