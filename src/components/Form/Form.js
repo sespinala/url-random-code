@@ -9,7 +9,7 @@ const Form = () => {
   const match = useRouteMatch();
   const [value, setValue] = useState();
 
-  console.log(match.params.id);
+  console.log(match.params.code);
 
   return (
     <form onSubmit={handleSubmit}>
