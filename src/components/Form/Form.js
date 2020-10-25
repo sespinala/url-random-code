@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { connect } from 'react-redux';
 import { setCode } from './../../redux/code/code.actions';
 
-const onSaveCode = () => { };
-
 const Form = () => {
   const match = useRouteMatch();
-  const [value, setValue] = useState();
+  const routeCode = match.params.code;
+  const dispatch = useDispatch();
+  const [textValue, setTextValue] = useState();
 
-  console.log(match.params.code);
+  const onSaveCode = () => {
+    dispatch(setCode(textValue));
+  };
+
+  const onCodeChange = event => {
+    setTextValue(event.target.value);
+  };
 
   return (
     <div>
@@ -20,7 +27,8 @@ const Form = () => {
           <textarea
             className="form-control"
             rows="3"
-            value={value}
+            defaultValue={routeCode}
+            onChange={onCodeChange}
           />
         </div>
       </div>
