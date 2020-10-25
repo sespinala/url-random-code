@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { Form } from './components';
+import Form from './components/Form/Form';
 
 const App = () => {
   return (

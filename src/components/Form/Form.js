@@ -1,38 +1,58 @@
 import React, { useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch, withRouter } from 'react-router-dom';
+import { useDispatch, connect } from 'react-redux';
 
-const handleSubmit = () => { };
-
-const handleChange = () => { };
+import { setCode } from './../../redux/code/code.actions';
 
 const Form = () => {
   const match = useRouteMatch();
-  const [value, setValue] = useState();
+  const routeCode = match.params.code;
+  const history = useHistory();
 
-  console.log(match.params.code);
+  const dispatch = useDispatch();
+  const [textValue, setTextValue] = useState();
+
+  const onSaveCode = () => {
+    dispatch(setCode(textValue));
+    history.push(`/url-random-code/${textValue}`);
+  };
+
+  const onCodeChange = event => {
+    setTextValue(event.target.value);
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Code</label>
         <div className="col-sm-10">
           <textarea
             className="form-control"
             rows="3"
-            value={value}
-            onChange={handleChange}
+            defaultValue={routeCode}
+            onChange={onCodeChange}
           />
         </div>
       </div>
       <div className="form-group row">
         <div className="col-sm-12">
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary" 
+            type="submit" 
+            onClick={onSaveCode}>
             Save
           </button>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 
-export { Form };
+const mapStateToProps = state => ({
+  code: state.value
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCode: code => dispatch(setCode(code))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Form));
