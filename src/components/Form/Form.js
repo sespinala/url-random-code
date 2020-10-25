@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
-const handleSubmit = () => { };
+import { connect } from 'react-redux';
+import { setCode } from './../../redux/code/code.actions';
 
-const handleChange = () => { };
+const onSaveCode = () => { };
 
 const Form = () => {
   const match = useRouteMatch();
@@ -12,7 +13,7 @@ const Form = () => {
   console.log(match.params.code);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Code</label>
         <div className="col-sm-10">
@@ -20,19 +21,26 @@ const Form = () => {
             className="form-control"
             rows="3"
             value={value}
-            onChange={handleChange}
           />
         </div>
       </div>
       <div className="form-group row">
         <div className="col-sm-12">
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary" type="submit" onClick={onSaveCode}>
             Save
           </button>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 
-export { Form };
+const mapStateToProps = state => ({
+  code: state.value
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCode: code => dispatch(setCode(code))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
