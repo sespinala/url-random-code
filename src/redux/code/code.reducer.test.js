@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import * as actionTypes from './code.action-types';
 
 import codeReducer from './code.reducer';
 
@@ -16,10 +17,8 @@ describe('Code Reducer', () => {
       code: 55555
     };
     const action = {
-      type: 'SET_CODE',
-      payload: { 
-        code: 55555 
-      }
+      type: actionTypes.SET_CODE,
+      payload: 55555 
     };
     const result = codeReducer(initialState, action);
     expect(result).deep.equals(expectedState);

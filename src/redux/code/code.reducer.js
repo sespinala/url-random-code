@@ -1,13 +1,15 @@
+import * as actionTypes from './code.action-types';
+
 const INITIAL_STATE = {
   code: null
 };
 
 const codeReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'SET_CODE':
+    case actionTypes.SET_CODE:
       return {
         ...state, 
-        code: action.payload.code
+        code: action.payload
       };
   
     default:

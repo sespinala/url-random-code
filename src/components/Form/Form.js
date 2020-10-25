@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { connect } from 'react-redux';
+import { useHistory, useRouteMatch, withRouter } from 'react-router-dom';
+import { useDispatch, connect } from 'react-redux';
 
 import { setCode } from './../../redux/code/code.actions';
 
 const Form = () => {
   const match = useRouteMatch();
   const routeCode = match.params.code;
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const [textValue, setTextValue] = useState();
 
   const onSaveCode = () => {
     dispatch(setCode(textValue));
+    history.push(`/url-random-code/${textValue}`);
   };
 
   const onCodeChange = event => {
@@ -53,4 +55,4 @@ const mapDispatchToProps = dispatch => ({
   setCode: code => dispatch(setCode(code))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Form));

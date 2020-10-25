@@ -1,4 +1,6 @@
+import * as actionTypes from './code.action-types';
+
 export const setCode = code => ({
-  type: 'SET_CODE',
+  type: actionTypes.SET_CODE,
   payload: code
 });
