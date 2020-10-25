@@ -7,7 +7,7 @@ const codeReducer = (state = INITIAL_STATE, action) => {
     case 'SET_CODE':
       return {
         ...state, 
-        code: action.payload
+        code: action.payload.code
       };
   
     default:

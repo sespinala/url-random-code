@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
 import { connect } from 'react-redux';
+
 import { setCode } from './../../redux/code/code.actions';
 
 const Form = () => {
@@ -34,7 +34,9 @@ const Form = () => {
       </div>
       <div className="form-group row">
         <div className="col-sm-12">
-          <button className="btn btn-primary" type="submit" onClick={onSaveCode}>
+          <button className="btn btn-primary" 
+            type="submit" 
+            onClick={onSaveCode}>
             Save
           </button>
         </div>
