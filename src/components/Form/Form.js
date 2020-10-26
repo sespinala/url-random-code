@@ -10,7 +10,7 @@ const Form = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const [textValue, setTextValue] = useState();
+  const [textValue, setTextValue] = useState(routeCode);
 
   const onSaveCode = () => {
     dispatch(setCode(textValue));
