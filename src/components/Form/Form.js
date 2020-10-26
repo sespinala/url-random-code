@@ -48,7 +48,7 @@ const Form = () => {
 };
 
 const mapStateToProps = state => ({
-  code: state.value
+  code: state.textValue
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch,
+  Switch
 } from 'react-router-dom';
+
 import Form from './components/Form/Form';
 
-const App = () => {
+const App = ({code}) => {
   const randomCode = btoa(Math.random()).substr(5, 12);
 
   return (
@@ -23,4 +25,8 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = ({code}) => ({
+  code: code
+});
+
+export default connect(mapStateToProps)(App);

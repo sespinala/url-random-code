@@ -11,7 +11,7 @@ const codeReducer = (state = INITIAL_STATE, action) => {
         ...state, 
         code: action.payload
       };
-  
+
     default:
       return state;
   }
